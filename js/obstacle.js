@@ -1,4 +1,6 @@
 //constructor de obstáculos
+
+
 class Obstacle {
   constructor(w, playerY, playerH, ctx) {
     this.ctx = ctx;
