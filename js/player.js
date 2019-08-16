@@ -12,15 +12,15 @@ class Player {
     this.y = this.y0;
 
     this.img = new Image();
-    this.img.src = "img/player.png";
+    this.img.src = "img/ProtaDefinitivo.png";
 
     // número de imágenes diferentes
-    this.img.frames = 3;
+    this.img.frames = 5;
     this.img.frameIndex = 0;
 
     // medidas de la imagen a representar en el canvas
-    this.w = 50;
-    this.h = 75;
+    this.w = 63;
+    this.h = 93;
 
     this.vy = 1;
 
@@ -81,11 +81,11 @@ class Player {
 
   animateImg(framesCounter) {
     // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
-    if (framesCounter % 6 === 0) {
+    if (framesCounter % 5 === 0) {
       this.img.frameIndex += 1;
 
       // Si el frame es el último, se vuelve al primero
-      if (this.img.frameIndex > 2) this.img.frameIndex = 0;
+      if (this.img.frameIndex > 4) this.img.frameIndex = 0;
     }
   }
 
