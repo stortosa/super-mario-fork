@@ -1,12 +1,12 @@
-class FlyItems {
+class Items {
   constructor(ctx, info, posY) {
     this.ctx = ctx
     this.info = info
     this.posY = posY
 
-    this.typeItem = data.map((dat) => (dat.image));
+    // this.item = data.map((dat) => (dat.image));
 
-    this.x = -550; //esto tendrá que empezar en negativo del canvasX e ir sumando con el tiempo(counter?)
+    this.x = 150; //esto tendrá que empezar en negativo del canvasX e ir sumando con el tiempo(counter?)
     this.y = 150; //esta tendrá que variar en cada CLOUD 
     this.dx = 4;
     this.dy = 2;
@@ -19,7 +19,7 @@ class FlyItems {
 
   }
   //methods
-  drawItem = () => {
+  draw() {
     this.y = this.posY
     this.ctx.drawImage(this.imgItem, this.x, this.y - 50, this.w / 2, this.h / 2);
     this.ctx.font = '48px serif';
@@ -27,7 +27,7 @@ class FlyItems {
     this.ctx.fillText(this.info.name, this.x - 20, this.y);
   }
 
-  moveItem = () => {
+  move() {
     if (this.onMove) {
       this.x += this.dx;
     }
@@ -37,7 +37,7 @@ class FlyItems {
     }
   }
 
-  autodestruccion = () => {
+  autodestruccion() {
     this.onMove = false
     this.info.name = ""
     //this.imgItem
