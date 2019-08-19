@@ -69,7 +69,7 @@ var Game = {
   reset: function () {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
     this.player = new Player(this.canvas.width, this.canvas.height, this.ctx, this.keys);
-    // this.enemy = new Enemy(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
+    this.enemy = new Enemy(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
     this.scoreBoard = ScoreBoard;
     this.framesCounter = 0;
     this.obstacles = [];
@@ -108,12 +108,12 @@ var Game = {
   clear: function () {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
-  
+
   //dibuja todos los assets del juego
   drawAll: function () {
     this.background.draw();
     this.player.draw(this.framesCounter);
-    // this.enemy.draw(this.framesCounter);
+    this.enemy.draw(this.framesCounter);
     this.obstacles.forEach(function (obstacle) {
       obstacle.draw();
     });
@@ -124,7 +124,7 @@ var Game = {
   moveAll: function () {
     this.background.move();
     this.player.move();
-    // this.enemy.move();
+    this.enemy.move();
     this.obstacles.forEach(function(obstacle) {
       obstacle.move();
     });
