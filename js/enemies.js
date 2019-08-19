@@ -1,10 +1,9 @@
 //creando el protagonista
 
-class Gorilla {
-  constructor(ctx, x, y, enemySpeed, wCanvas, framesCounter, game) {  //keys
+class Enemy {
+  constructor(ctx, x, y, enemySpeed, wCanvas, framesCounter) {  //keys
     this.x = x
     this.y = y
-    this.game = game
     this.ctx = ctx;
     this.wCanvas = wCanvas;
     this.framesCounter = framesCounter
@@ -16,7 +15,9 @@ class Gorilla {
     this.gravity = 0.4;
     this.enemySpeed = enemySpeed;
 
-    this.imgEnemy = imgEnemy
+    //imagen del gorila:
+    this.imgEnemy = new Image();
+    this.imgEnemy.src = "img/gorila.png";
 
     // número de imágenes diferentes
     this.imgEnemy.frames = 5;
@@ -32,7 +33,6 @@ class Gorilla {
     // this.frameWidth = this.frameWidthTotal / 5;
     this.frameHeightTotal = 100;
 
-    // this.setListener();  
   }
 
   move() {
@@ -51,7 +51,7 @@ class Gorilla {
       148,//100,
       100,//100,
       this.x, //donde ponerlo inicio (x, y)
-      this.y,
+      this.y -20,
       100,
       100
     )
@@ -60,7 +60,7 @@ class Gorilla {
 
   animateImgEnemy() {
     // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
-    if (this.game.framesCounter % 7 === 0) {
+    if (this.framesCounter % 9 === 0) {
       this.imgEnemy.frameIndex += 1;
       // Si el frame es el último, se vuelve al primero
       if (this.imgEnemy.frameIndex > 4) this.imgEnemy.frameIndex = 0;

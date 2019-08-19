@@ -43,6 +43,7 @@ var Game = {
       // eliminamos obstáculos fuera del canvas
       this.clearObstacles();
 
+      //colision para game over:
       if (this.isCollision()) {
         this.gameOver();
       }
@@ -68,11 +69,16 @@ var Game = {
   reset: function () {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
     this.player = new Player(this.canvas.width, this.canvas.height, this.ctx, this.keys);
-    this.gorilla = new Gorilla(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
+    this.enemy = new Enemy(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
     this.scoreBoard = ScoreBoard;
     this.framesCounter = 0;
     this.obstacles = [];
     this.score = 0;
+  },
+  
+  //limpieza de la pantalla
+  clear: function () {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 
   // chequea si ha sucedido una colisión
@@ -89,6 +95,13 @@ var Game = {
     });
   },
 
+  //eliminamos obstaculos que esten fuera de la pantalla:
+  clearObstacles: function() {
+    this.obstacles = this.obstacles.filter(function(obstacle) {
+      return obstacle.x >= 0;
+    });
+  },
+
   //generamos nuevos obstaculos:
   generateObstacle: function () {
     this.obstacles.push(
@@ -96,16 +109,11 @@ var Game = {
     );
   },
 
-  //limpieza de la pantalla
-  clear: function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  },
-
   //dibuja todos los assets del juego
   drawAll: function () {
     this.background.draw();
     this.player.draw(this.framesCounter);
-    this.gorilla.draw(this.framesCounter);
+    this.enemy.draw(this.framesCounter);
     this.obstacles.forEach(function (obstacle) {
       obstacle.draw();
     });
@@ -116,7 +124,7 @@ var Game = {
   moveAll: function () {
     this.background.move();
     this.player.move();
-    this.gorilla.move();
+    this.enemy.move();
     this.obstacles.forEach(function(obstacle) {
       obstacle.move();
     });
