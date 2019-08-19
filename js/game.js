@@ -48,7 +48,7 @@ var Game = {
         this.gameOver();
       }
 
-    }, 1200 / this.fps);
+    }, 1000 / this.fps);
   },
 
   stop: function () {
@@ -59,7 +59,7 @@ var Game = {
   gameOver: function () {
     this.stop();
 
-    if (confirm("GAME OVER. Play again?")) {
+    if (confirm("GAME OVER. Play again, Jim?")) {
       this.reset();
       this.start();
     }
@@ -69,16 +69,11 @@ var Game = {
   reset: function () {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
     this.player = new Player(this.canvas.width, this.canvas.height, this.ctx, this.keys);
-    this.enemy = new Enemy(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
+    // this.enemy = new Enemy(this.ctx, 800, 500, 13, this.wCanvas, this.framesCounter);
     this.scoreBoard = ScoreBoard;
     this.framesCounter = 0;
     this.obstacles = [];
     this.score = 0;
-  },
-  
-  //limpieza de la pantalla
-  clear: function () {
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
 
   // chequea si ha sucedido una colisión
@@ -108,12 +103,17 @@ var Game = {
       new Obstacle(this.canvas.width, this.player.y0, this.player.h, this.ctx)
     );
   },
-
+  
+  //limpieza de la pantalla
+  clear: function () {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  },
+  
   //dibuja todos los assets del juego
   drawAll: function () {
     this.background.draw();
     this.player.draw(this.framesCounter);
-    this.enemy.draw(this.framesCounter);
+    // this.enemy.draw(this.framesCounter);
     this.obstacles.forEach(function (obstacle) {
       obstacle.draw();
     });
@@ -124,7 +124,7 @@ var Game = {
   moveAll: function () {
     this.background.move();
     this.player.move();
-    this.enemy.move();
+    // this.enemy.move();
     this.obstacles.forEach(function(obstacle) {
       obstacle.move();
     });
