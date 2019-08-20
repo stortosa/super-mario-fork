@@ -3,6 +3,7 @@ var Game = {
   ctx: undefined,
   fps: 60,
   scoreBoard: undefined,
+  framesCounter: 0,
   keys: {
     TOP_KEY: 38,
     SPACE: 32

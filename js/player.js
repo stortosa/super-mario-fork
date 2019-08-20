@@ -59,7 +59,7 @@ class Player {
   setListeners() {
     document.onkeydown = function(event) {
       if (event.keyCode === this.keys.TOP_KEY && this.y == this.y0) {
-        this.y -= 5;
+        this.y -= 4;
         this.vy -= 10;
       } else if (event.keyCode == this.keys.SPACE) {
         this.shoot();

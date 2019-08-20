@@ -36,7 +36,7 @@ class Enemy {
   }
 
   move() {
-    this.x -= this.enemySpeed
+    this.x -= 15
     if(this.x < 0){
       this.x = 1000
     }
@@ -60,7 +60,7 @@ class Enemy {
 
   animateImgEnemy() {
     // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
-    if (this.framesCounter % 9 === 0) {
+    if (this.framesCounter % 7 === 0) {
       this.imgEnemy.frameIndex += 1;
       // Si el frame es el último, se vuelve al primero
       if (this.imgEnemy.frameIndex > 4) this.imgEnemy.frameIndex = 0;
