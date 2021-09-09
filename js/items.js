@@ -4,7 +4,7 @@ class Items {
     this.info = info
     this.posY = posY
 
-    // this.item = data.map((dat) => (dat.image));
+    this.item = data.map((dat) => (dat.image));
 
     this.x = 150; //esto tendrá que empezar en negativo del canvasX e ir sumando con el tiempo(counter?)
     this.y = 150; //esta tendrá que variar en cada CLOUD 
